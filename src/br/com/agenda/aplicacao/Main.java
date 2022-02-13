@@ -29,7 +29,11 @@ public class Main {
 		c1.setDataCastro(new Date());
 		c1.setId(3);	// É O NÚMERO QUE ESTÁ NO BANCO DE DADOS
 		
-		contatoDao.update(c1);
+		//contatoDao.update(c1);
+		
+		// DELETAR O CONTATO PELO SEU NÚMERO DE ID
+		
+		contatoDao.deleteByID(4);
 		
 		// Visualição dos registros do banco de dados TODOS
 		

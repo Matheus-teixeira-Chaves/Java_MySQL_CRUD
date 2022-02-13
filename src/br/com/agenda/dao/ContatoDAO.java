@@ -24,6 +24,12 @@ public class ContatoDAO {
 	 * R: READ
 	 * U: UPDATE
 	 * D: DELETE
+	 * 
+	 * CONTATODAO É ONDE FICA À NOSSA REGRA DE NÉGOCIOS
+	 * CONNECTIONFACTORY É A NOSSA FABRICA DE CONEXÕES
+	 * MAIN É O METODO PRINCIPAL QUE INCIAS TODAS AS OUTRAS 
+	 * CONTATO É O NOSSO OBJETO QUE CONFIGURA TODOS OS CONTATOS
+	 *
 	 * */
 	
 	public void save(Contato contato) throws SQLException {
@@ -189,6 +195,41 @@ public class ContatoDAO {
 					e.printStackTrace();
 				}
 			}
+	}
+	
+	public void deleteByID(int id) {
+		
+		String sql = "DELETE FROM contatos WHERE id = ?";
+		
+		Connection conn = null;
+		
+		PreparedStatement pstm = null;
+		
+		try {
+			conn = ConnectionFactory.createConnectionToMySQL();
+			
+			pstm = conn.prepareStatement(sql);
+			
+			pstm.setInt(1, id);
+			pstm.execute();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if (pstm != null) {
+					pstm.close();
+				}
+				
+				if (conn != null) {
+					conn.close();
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }
