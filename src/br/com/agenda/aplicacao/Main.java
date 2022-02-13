@@ -18,7 +18,18 @@ public class Main {
 		contato.setIdade(25);
 		contato.setDataCastro(new Date());
 		
-		contatoDao.save(contato);
+		//contatoDao.save(contato);
+		
+		// ATUALIZAR CONTATO
+		
+		Contato c1 = new Contato();
+		
+		c1.setNome("Leticia Teixeira Chaves Frazão");
+		c1.setIdade(24);
+		c1.setDataCastro(new Date());
+		c1.setId(3);	// É O NÚMERO QUE ESTÁ NO BANCO DE DADOS
+		
+		contatoDao.update(c1);
 		
 		// Visualição dos registros do banco de dados TODOS
 		
