@@ -19,6 +19,12 @@ public class Main {
 		contato.setDataCastro(new Date());
 		
 		contatoDao.save(contato);
+		
+		// Visualição dos registros do banco de dados TODOS
+		
+		for (Contato c : contatoDao.getContatos()) {
+			System.out.println("Contato: " + c.getNome());
+		}
 	}
 
 }
